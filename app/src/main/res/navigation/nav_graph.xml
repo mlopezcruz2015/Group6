@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.group6.FirstFragment"
+        android:name="com.example.group6.MainMenuFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragmen_mainMenu">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_MainMenuFragment_to_SettingsFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.group6.SecondFragment"
+        android:name="com.example.group6.SettingsFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_settings">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_SettingsFragment_to_MainMenuFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

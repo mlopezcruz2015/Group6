@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".MainMenuFragment">
 
     <TextView
-        android:id="@+id/textview_first"
+        android:id="@+id/textview_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/group_name"
@@ -16,27 +16,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <Button
-        android:id="@+id/button_first"
+        android:id="@+id/button_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_first" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_title" />
 
     <Button
         android:id="@+id/button_bluetooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connect Device"
-        app:layout_constraintBottom_toTopOf="@+id/button_first"
+        android:text="@string/connect_device"
+        app:layout_constraintBottom_toTopOf="@+id/button_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_first" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_title" />
+
+    <TextView
+        android:id="@+id/textview_connectionStatusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/connection_status_label"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_bluetooth"
+        app:layout_constraintEnd_toStartOf="@+id/textview_connectionStatus"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_title" />
+
+    <TextView
+        android:id="@+id/textview_connectionStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/connection_status"
+        app:layout_constraintBottom_toTopOf="@+id/button_bluetooth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
