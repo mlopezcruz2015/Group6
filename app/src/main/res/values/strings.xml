@@ -2,8 +2,9 @@
     <string name="app_name">Group6</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="mainmenu_fragment_label">Main Menu Fragment</string>
+    <string name="settings_fragment_label">Settings Fragment</string>
+    <string name="connection_fragment_label">Connection Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -14,4 +15,11 @@
     <string name="connection_status_label">Connection Status:</string>
     <string name="connection_status">Not Connected</string>
     <string name="returnText">Return</string>
+    <string name="select_paired_device">Select Paired Device:</string>
+    <string name="set_color">Set Color</string>
+    <string name="reset_to_defaults">Reset to Defaults</string>
+    <string name="low">Low</string>
+    <string name="med">Med</string>
+    <string name="high">High</string>
+    <string name="sensitivity">Sensitivity:</string>
 </resources>

@@ -30,5 +30,13 @@ public class MainMenuFragment extends Fragment {
                         .navigate(R.id.action_MainMenuFragment_to_SettingsFragment);
             }
         });
+
+        view.findViewById(R.id.button_bluetooth).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MainMenuFragment.this)
+                        .navigate(R.id.action_MainMenuFragment_to_ConnectionFragment);
+            }
+        });
     }
 }

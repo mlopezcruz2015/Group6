@@ -3,26 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/MainMenuFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/MainMenuFragment"
         android:name="com.example.group6.MainMenuFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragmen_mainMenu">
+        android:label="@string/mainmenu_fragment_label"
+        tools:layout="@layout/fragment_mainmenu">
 
         <action
             android:id="@+id/action_MainMenuFragment_to_SettingsFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/SettingsFragment" />
+        <action
+            android:id="@+id/action_MainMenuFragment_to_ConnectionFragment"
+            app:destination="@id/ConnectionFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/SettingsFragment"
         android:name="com.example.group6.SettingsFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/settings_fragment_label"
         tools:layout="@layout/fragment_settings">
 
         <action
             android:id="@+id/action_SettingsFragment_to_MainMenuFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/MainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ConnectionFragment"
+        android:name="com.example.group6.ConnectionFragment"
+        android:label="@string/connection_fragment_label" >
+        <action
+            android:id="@+id/action_ConnectionFragment_to_MainMenuFragment"
+            app:destination="@id/MainMenuFragment" />
     </fragment>
 </navigation>

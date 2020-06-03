@@ -1,23 +1,15 @@
 package com.example.group6;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
 
-public class SettingsFragment extends Fragment {
-
-    private ImageAdapter imageAdapter;
-    private FragmentActivity activity;
+public class ConnectionFragment extends Fragment {
 
     @Override
     public View onCreateView(
@@ -25,7 +17,7 @@ public class SettingsFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        return inflater.inflate(R.layout.fragment_connection, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -34,8 +26,8 @@ public class SettingsFragment extends Fragment {
         view.findViewById(R.id.button_return).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SettingsFragment.this)
-                        .navigate(R.id.action_SettingsFragment_to_MainMenuFragment);
+                NavHostFragment.findNavController(ConnectionFragment.this)
+                        .navigate(R.id.action_ConnectionFragment_to_MainMenuFragment);
             }
         });
     }
