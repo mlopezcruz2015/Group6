@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -36,6 +37,28 @@ public class SettingsFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(SettingsFragment.this)
                         .navigate(R.id.action_SettingsFragment_to_MainMenuFragment);
+            }
+        });
+
+        activity = this.getActivity();
+        final GridView grid = getView().findViewById(R.id.grid_led_matrix);
+        imageAdapter = new ImageAdapter(activity);
+        grid.setAdapter(imageAdapter);
+
+        // Enables the elements of the grid to be selected
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id)
+            {
+                if (imageAdapter.getChangeable(position) != null)
+                {
+                    ImageView lastChosen = (ImageView) imageAdapter.getItem(imageAdapter.getChosenPosition());
+                    lastChosen.clearColorFilter();
+
+                    ImageView image = (ImageView) imageAdapter.getItem(position);
+                    image.setColorFilter(Color.CYAN);
+                    imageAdapter.setChosen(position);
+                }
             }
         });
     }

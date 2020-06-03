@@ -22,4 +22,7 @@
     <string name="med">Med</string>
     <string name="high">High</string>
     <string name="sensitivity">Sensitivity:</string>
+    <string name="use_custom_pattern">Use Custom Pattern</string>
+    <string name="use_default_pattern">Use Default Pattern</string>
+    <string name="led_grid">LED Grid</string>
 </resources>
