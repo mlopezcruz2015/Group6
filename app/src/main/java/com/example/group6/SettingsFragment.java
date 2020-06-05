@@ -1,16 +1,21 @@
 package com.example.group6;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
@@ -45,7 +50,31 @@ public class SettingsFragment extends Fragment {
         imageAdapter = new ImageAdapter(activity);
         grid.setAdapter(imageAdapter);
 
-        // Enables the elements of the grid to be selected
+        createSaveButton();
+        createGridClickable(grid);
+    }
+
+    /**
+     * Creates the button that saves the settings
+     */
+    private void createSaveButton()
+    {
+        Button reset_grid = getView().findViewById(R.id.button_save);
+        reset_grid.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                imageAdapter.setMatrixPositions();
+                boolean[][] test = imageAdapter.getMatrixPattern();
+            }
+        });
+    }
+
+    /**
+     * Creates the toggles/cells for the grid.
+     */
+    private void createGridClickable(GridView grid)
+    {
+        //Toggles the elements of the grid
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> parent, View v, int position, long id)
@@ -56,8 +85,18 @@ public class SettingsFragment extends Fragment {
                     lastChosen.clearColorFilter();
 
                     ImageView image = (ImageView) imageAdapter.getItem(position);
-                    image.setColorFilter(Color.CYAN);
+
+                    //Check the color and toggle.
+                    ColorDrawable drawable = (ColorDrawable) image.getBackground();
+                    int color = drawable.getColor();
+                    if (color == Color.YELLOW)
+                        image.setBackgroundColor(Color.GRAY);
+                    else
+                        image.setBackgroundColor(Color.YELLOW);
+
                     imageAdapter.setChosen(position);
+
+                    //image.setColorFilter(Color.CYAN);
                 }
             }
         });

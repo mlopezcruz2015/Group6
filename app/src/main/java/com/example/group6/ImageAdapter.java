@@ -3,6 +3,7 @@ package com.example.group6;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,6 +19,7 @@ public class ImageAdapter extends BaseAdapter {
     public ImageAdapter(Context c) {
         mContext = c;
         images = new ImageView[ROW_LENGTH][COLUMN_LENGTH];
+        matrix_pattern = new boolean[ROW_LENGTH][COLUMN_LENGTH];
     }
 
     @Override
@@ -56,7 +58,7 @@ public class ImageAdapter extends BaseAdapter {
         imageView.setImageResource(R.drawable.blank);
 
         images[position/8][position%8] = imageView;
-        imageView.setBackgroundColor(NORMAL);
+        imageView.setBackgroundColor(OFF);
         return imageView;
     }
 
@@ -104,7 +106,7 @@ public class ImageAdapter extends BaseAdapter {
      */
     public void deleteEntry(int row, int col)
     {
-        images[row][col].setImageResource(R.drawable.blank);
+        images[row][col].setBackgroundColor(OFF);
     }
 
     /**
@@ -112,17 +114,42 @@ public class ImageAdapter extends BaseAdapter {
      */
     public void resetGrid()
     {
-        //Iterate through all positions possible and reset them. 9x9 = 81
+        //Iterate through all positions possible and reset them. 8x8 = 64
         for (int x = 0; x < 64; x++)
         {
-            //Get ImageView to reset to blank.
+            //Get ImageView to reset to off.
             ImageView curChosen = (ImageView) this.getChangeable(x);
             if (curChosen != null)
             {
-                //Reset to blank if it's not one of the default values
-                curChosen.setImageResource(R.drawable.blank);
+                //Reset to OFF
+                curChosen.setBackgroundColor(OFF);
             }
         }
+    }
+
+    public void setMatrixPositions()
+    {
+        //Iterate through all positions possible and check if cell is turned on.
+        for (int x = 0; x < 8; x++)
+        {
+            for (int y = 0; y < 8; y++)
+            {
+                ImageView curChosen = (ImageView) this.getChangeable(x,y);
+                if (curChosen != null)
+                {
+                    ColorDrawable drawable = (ColorDrawable) curChosen.getBackground();
+                    int color = drawable.getColor();
+
+                    //Set boolean value for the specific cell.
+                    matrix_pattern[x][y] = color == ON;
+                }
+            }
+        }
+    }
+
+    public boolean[][] getMatrixPattern()
+    {
+        return matrix_pattern;
     }
 
     /**
@@ -140,11 +167,10 @@ public class ImageAdapter extends BaseAdapter {
     private final static int GRID_SIZE = 64;
     private final static int ROW_LENGTH = 8;
     private final static int COLUMN_LENGTH = 8;
-    private final static int SQUARE_LENGTH = 3;
     private final ImageView[][] images;
+    private boolean[][] matrix_pattern;
     private int chosenPosition;
 
-    private final static int NORMAL = Color.GRAY;
-    private final static int CLASH = Color.RED;
-    private final static int INCORRECT = Color.RED;
+    private final static int OFF = Color.GRAY;
+    private final static int ON = Color.YELLOW;
 }
