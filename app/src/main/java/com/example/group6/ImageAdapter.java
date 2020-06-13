@@ -114,7 +114,6 @@ public class ImageAdapter extends BaseAdapter {
      */
     public void resetGrid()
     {
-        //Iterate through all positions possible and reset them. 8x8 = 64
         for (int x = 0; x < 64; x++)
         {
             //Get ImageView to reset to off.
@@ -142,6 +141,23 @@ public class ImageAdapter extends BaseAdapter {
 
                     //Set boolean value for the specific cell.
                     matrix_pattern[x][y] = color == ON;
+                }
+            }
+        }
+    }
+
+    public void loadMatrixPositions(boolean[][] pattern)
+    {
+        if (pattern != null) {
+            for (int x = 0; x < 8; x++) {
+                for (int y = 0; y < 8; y++) {
+                    if (pattern[x][y]) {
+                        ImageView curChosen = (ImageView) this.getChangeable(x, y);
+
+                        if (curChosen != null) {
+                            curChosen.setBackgroundColor(ON);
+                        }
+                    }
                 }
             }
         }
