@@ -1,5 +1,6 @@
 package com.example.group6;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
