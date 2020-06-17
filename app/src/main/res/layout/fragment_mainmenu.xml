@@ -10,44 +10,59 @@
         android:id="@+id/textview_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
         android:text="@string/group_name"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
-
-    <Button
-        android:id="@+id/button_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_bluetooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="282dp"
+        android:layout_marginBottom="281dp"
+        android:drawableLeft="@drawable/ic_baseline_settings_bluetooth_24"
+        android:drawablePadding="2dp"
         android:text="@string/connect_device"
-        app:layout_constraintBottom_toTopOf="@+id/button_settings"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_title" />
+        app:layout_constraintTop_toTopOf="@+id/textview_connectionStatus" />
+
+    <Button
+        android:id="@+id/button_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="23dp"
+        android:drawableLeft="@drawable/ic_baseline_settings_24"
+        android:drawablePadding="5dp"
+        android:text="@string/settings"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@+id/button_bluetooth"
+        app:layout_constraintTop_toBottomOf="@+id/button_bluetooth" />
 
     <TextView
         android:id="@+id/textview_connectionStatusLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
         android:text="@string/connection_status_label"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button_bluetooth"
         app:layout_constraintEnd_toStartOf="@+id/textview_connectionStatus"
-        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_title" />
 
@@ -56,10 +71,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/connection_status"
-        app:layout_constraintBottom_toTopOf="@+id/button_bluetooth"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textview_connectionStatusLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_title" />
+        app:layout_constraintStart_toEndOf="@+id/textview_connectionStatusLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

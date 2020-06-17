@@ -2,22 +2,21 @@ package com.example.group6;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -87,6 +86,7 @@ public class SettingsFragment extends Fragment {
     {
         Button save_button = getView().findViewById(R.id.button_save);
         save_button.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(View v)
             {
 
@@ -177,6 +177,7 @@ public class SettingsFragment extends Fragment {
         //Toggles the elements of the grid
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             public void onItemClick(AdapterView<?> parent, View v, int position, long id)
             {
                 if (imageAdapter.getChangeable(position) != null)
@@ -187,12 +188,13 @@ public class SettingsFragment extends Fragment {
                     ImageView image = (ImageView) imageAdapter.getItem(position);
 
                     //Check the color and toggle.
-                    ColorDrawable drawable = (ColorDrawable) image.getBackground();
-                    int color = drawable.getColor();
-                    if (color == Color.YELLOW)
-                        image.setBackgroundColor(Color.GRAY);
+                    GradientDrawable drawable = (GradientDrawable) image.getBackground();
+                    int[] color = drawable.getColors();
+                    String hexColor = String.format("#%06X", (0xFFFFFF & color[0]));
+                    if (hexColor.equals("#FFEB3B"))
+                        image.setBackgroundResource(R.drawable.off);
                     else
-                        image.setBackgroundColor(Color.YELLOW);
+                        image.setBackgroundResource(R.drawable.on);
 
                     imageAdapter.setChosen(position);
 

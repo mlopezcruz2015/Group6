@@ -1,14 +1,16 @@
 package com.example.group6;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import androidx.annotation.RequiresApi;
 
 public class ImageAdapter extends BaseAdapter {
 
@@ -58,7 +60,7 @@ public class ImageAdapter extends BaseAdapter {
         imageView.setImageResource(R.drawable.blank);
 
         images[position/8][position%8] = imageView;
-        imageView.setBackgroundColor(OFF);
+        imageView.setBackgroundResource(OFF);
         return imageView;
     }
 
@@ -121,11 +123,12 @@ public class ImageAdapter extends BaseAdapter {
             if (curChosen != null)
             {
                 //Reset to OFF
-                curChosen.setBackgroundColor(OFF);
+                curChosen.setBackgroundResource(OFF);
             }
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void setMatrixPositions()
     {
         //Iterate through all positions possible and check if cell is turned on.
@@ -136,11 +139,12 @@ public class ImageAdapter extends BaseAdapter {
                 ImageView curChosen = (ImageView) this.getChangeable(x,y);
                 if (curChosen != null)
                 {
-                    ColorDrawable drawable = (ColorDrawable) curChosen.getBackground();
-                    int color = drawable.getColor();
-
+                    GradientDrawable drawable = (GradientDrawable) curChosen.getBackground();
+                    int[] color = drawable.getColors();
+                    String hexColor = String.format("#%06X", (0xFFFFFF & color[0]));
                     //Set boolean value for the specific cell.
-                    matrix_pattern[x][y] = color == ON;
+                    if (hexColor.equals("#FFEB3B")) matrix_pattern[x][y] = true;
+                    else matrix_pattern[x][y] = false;
                 }
             }
         }
@@ -155,7 +159,7 @@ public class ImageAdapter extends BaseAdapter {
                         ImageView curChosen = (ImageView) this.getChangeable(x, y);
 
                         if (curChosen != null) {
-                            curChosen.setBackgroundColor(ON);
+                            curChosen.setBackgroundResource(ON);
                         }
                     }
                 }
@@ -187,6 +191,6 @@ public class ImageAdapter extends BaseAdapter {
     private boolean[][] matrix_pattern;
     private int chosenPosition;
 
-    private final static int OFF = Color.GRAY;
-    private final static int ON = Color.YELLOW;
+    private final static int OFF = R.drawable.off;
+    private final static int ON = R.drawable.on;
 }
