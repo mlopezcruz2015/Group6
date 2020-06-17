@@ -73,7 +73,7 @@ public class ConnectionFragment extends Fragment {
                     String selectedItem = (String) parent.getItemAtPosition(position);
                     final String macAddress = selectedItem.substring(selectedItem.indexOf(":") + 2);
                     labelSelectedDevice.setText(macAddress);
-
+//
                     //BluetoothDevice bluetoothDevice = BA.getRemoteDevice(macAddress);
                     // Initiate a connection request in a separate thread
                     //ConnectingThread t = new ConnectingThread(bluetoothDevice, BA);
